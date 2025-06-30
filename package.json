@@ -1,0 +1,15 @@
+{
+  "name": "simple-hello-world",
+  "version": "1.0.0",
+  "description": "Create a simple hello world application that will send the message HelloWorld to a topic on Hedera Hashgraph",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Shaveen Bageloo",
+  "license": "ISC",
+  "dependencies": {
+    "@hashgraph/sdk": "^2.67.0"
+  }
+}
