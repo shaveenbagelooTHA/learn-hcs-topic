@@ -44,12 +44,12 @@ This project demonstrates how to interact with the Hedera Hashgraph Consensus Se
 
 ## Configuration
 
-Edit the following variables at the top of your `index.js` file:
+Edit the following variables at the top of your `.env` file:
 
 
 - **MY_ACCOUNT_ID:** Your Hedera Testnet account ID.
 - **MY_PRIVATE_KEY:** Your account's private key.
-- **MY_TOPIC_ID:** (Optional) If you want to use an existing topic, enter its ID. Otherwise, uncomment the `createTopic()` call in `main()` to create a new one.
+- **MY_TOPIC_ID:** (Optional) If you want to use an existing topic, enter its ID. Otherwise you can create a new one by running npm run start:create-topic.
 
 ---
 
@@ -57,18 +57,28 @@ Edit the following variables at the top of your `index.js` file:
 
 1. **Run the Script**
 
+```
+  Runnable commands are: 
+  npm run start:listener (should be run on a stand-alone terminal window) 
+  npm run start:submit-message 
+  npm run start:create-topic 
+```
 
 2. **What Happens**
 - The script will use the topic ID you provide.  
-- To create a new topic, uncomment the following line in the `main()` function:
+- To create a new topic, 
   ```
-  //const topicId = await createTopic();
+  npm run start:create-topic 
   ```
-- To enable the topic listener, uncomment:
+- To enable the topic listener
   ```
-  // await listenToTopic(MY_TOPIC_ID);
+  npm run start:listener
   ```
 - The script submits several types of messages to the topic and prints transaction details and explorer links.
+  ```
+  npm run start:submit-message 
+  ```
+
 
 3. **View Results**
 - Transaction and topic links are printed for easy verification on [Hashscan.IO](https://hashscan.io/testnet/home).

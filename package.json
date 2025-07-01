@@ -5,11 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "start:submit-message": "nodemon submitMessage.js",
+    "start:create-topic": "nodemon createTopic.js",
+    "start:listener": "nodemon listener.js"
   },
   "author": "Shaveen Bageloo",
   "license": "ISC",
   "dependencies": {
-    "@hashgraph/sdk": "^2.67.0"
+    "@hashgraph/sdk": "^2.67.0",
+    "dotenv": "^17.0.0"
   }
 }
