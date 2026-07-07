@@ -1,3 +1,5 @@
+//import xml2js from 'xml2js';
+require('xml2js');
 const {
     AccountId,
     PrivateKey,
@@ -82,7 +84,7 @@ async function main() {
             "invoice": invoiceId,
             "memo": memo
         });
-        
+
         const ownershipCertificate = JSON.stringify({
             "ownershipCertificate": {
                 "owner": "ShaveenB",
@@ -100,10 +102,11 @@ async function main() {
             "memo": memo
         });
 
-        await submitMessageToTopic(MY_TOPIC_ID, helloWorld, memo);
-        await submitMessageToTopic(MY_TOPIC_ID, paymentInstruction, memo);
-        await submitMessageToTopic(MY_TOPIC_ID, ownershipCertificate, memo);
-        await submitMessageToTopic(MY_TOPIC_ID, ownershipCertificatePrivate, memo);
+        // await submitMessageToTopic(MY_TOPIC_ID, helloWorld, memo);
+        // await submitMessageToTopic(MY_TOPIC_ID, paymentInstruction, memo);
+        // await submitMessageToTopic(MY_TOPIC_ID, ownershipCertificate, memo);
+        // await submitMessageToTopic(MY_TOPIC_ID, ownershipCertificatePrivate, memo);
+
 
     } catch (error) {
         console.error("\n!!! Critical Error: Demo Aborted !!!", error);
@@ -113,7 +116,13 @@ async function main() {
     }
 }
 
+async function submitXMLMessageToTopic() {
+    console.log('XML Message Submit')
+    await submitMessageToTopic(MY_TOPIC_ID, "helloWorld", "XML Message");
+}
+
+
 
 // Execute main function
-main();
-
+//main();
+submitXMLMessageToTopic();
