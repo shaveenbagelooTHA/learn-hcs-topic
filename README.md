@@ -51,9 +51,11 @@ This project demonstrates how to interact with the Hedera Hashgraph Consensus Se
 Edit the following variables at the top of your `.env` file:
 
 
-- **MY_ACCOUNT_ID:** Your ED25519 Hedera Testnet account ID.
-- **MY_PRIVATE_KEY:** Your ED25519  account's private key.
+- **MY_ECDSA_ACCOUNT_ID:** Your ECDSA Hedera Testnet account ID.
+- **MY_DER_ECDSA_PRIVATE_KEY:** Your ECDSA  account's private key.
 - **MY_TOPIC_ID:** (Optional) If you want to use an existing topic, enter its ID. Otherwise you can create a new one by running npm run start:create-topic.
+
+
 
 ---
 
@@ -65,7 +67,8 @@ Edit the following variables at the top of your `.env` file:
   Runnable commands are: 
   npm run start:listener (should be run on a stand-alone terminal window) 
   npm run start:submit-message 
-  npm run start:create-topic 
+  npm run start:create-topic
+  npm run start:create-stablecoin 
 ```
 
 2. **What Happens**
@@ -105,7 +108,7 @@ Edit the following variables at the top of your `.env` file:
 
 ## Troubleshooting
 
-- **Missing credentials:** Ensure you fill in `MY_ACCOUNT_ID`, `MY_PRIVATE_KEY`, and `MY_TOPIC_ID`.
+- **Missing credentials:** Ensure you fill in `MY_ECDSA_ACCOUNT_ID`, `MY_DER_ECDSA_PRIVATE_KEY`, and `MY_TOPIC_ID`.
 - **SDK errors:** Double-check your Hedera account details and network connectivity.
 - **Node version:** If you encounter syntax errors, verify your Node.js version is up to date.
 
