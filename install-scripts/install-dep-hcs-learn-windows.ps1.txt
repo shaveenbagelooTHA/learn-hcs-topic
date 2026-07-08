@@ -1,0 +1,97 @@
+<#
+.SYNOPSIS
+    setup.ps1 - Dev environment bootstrap for Windows
+    Installs: Git, Node.js (+ npm), Visual Studio Code (via winget)
+    Then clones: https://github.com/shaveenbagelooTHA/learn-hcs-topic.git
+
+.USAGE
+    Right-click > Run with PowerShell, or from a terminal:
+        powershell -ExecutionPolicy Bypass -File .\setup.ps1
+
+    Requires winget (built into Windows 10 1809+ / Windows 11).
+#>
+
+$ErrorActionPreference = "Stop"
+
+$RepoUrl = "https://github.com/shaveenbagelooTHA/learn-hcs-topic.git"
+$RepoDir = "learn-hcs-topic"
+
+function Info($msg)  { Write-Host "[INFO]  $msg" -ForegroundColor Cyan }
+function Ok($msg)    { Write-Host "[OK]    $msg" -ForegroundColor Green }
+function Warn($msg)  { Write-Host "[WARN]  $msg" -ForegroundColor Yellow }
+function Fail($msg)  { Write-Host "[ERROR] $msg" -ForegroundColor Red }
+
+# ---------------------------------------------------------------
+# Check winget is available
+# ---------------------------------------------------------------
+if (-not (Get-Command winget -ErrorAction SilentlyContinue)) {
+    Fail "winget not found. Install 'App Installer' from the Microsoft Store, then re-run this script."
+    exit 1
+}
+
+function Install-IfMissing {
+    param(
+        [string]$Command,      # command to test for on PATH
+        [string]$WingetId,     # winget package id
+        [string]$DisplayName
+    )
+    if (Get-Command $Command -ErrorAction SilentlyContinue) {
+        Ok "$DisplayName already installed"
+    } else {
+        Info "Installing $DisplayName..."
+        winget install --id $WingetId -e --accept-source-agreements --accept-package-agreements
+        if ($LASTEXITCODE -ne 0) {
+            Warn "$DisplayName install returned exit code $LASTEXITCODE - it may already be installed or need a retry."
+        }
+    }
+}
+
+# ---------------------------------------------------------------
+# Install tools
+# ---------------------------------------------------------------
+Install-IfMissing -Command "git"  -WingetId "Git.Git"                        -DisplayName "Git"
+Install-IfMissing -Command "node" -WingetId "OpenJS.NodeJS.LTS"              -DisplayName "Node.js LTS (includes npm)"
+Install-IfMissing -Command "code" -WingetId "Microsoft.VisualStudioCode"     -DisplayName "Visual Studio Code"
+
+# ---------------------------------------------------------------
+# Refresh PATH for this session so newly installed tools are usable
+# ---------------------------------------------------------------
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine") + ";" +
+            [System.Environment]::GetEnvironmentVariable("Path", "User")
+
+# ---------------------------------------------------------------
+# Clone the repo
+# ---------------------------------------------------------------
+if (Test-Path $RepoDir) {
+    Warn "Directory '$RepoDir' already exists - skipping clone."
+    Warn "Run 'cd $RepoDir; git pull' to update it instead."
+} else {
+    if (Get-Command git -ErrorAction SilentlyContinue) {
+        Info "Cloning $RepoUrl ..."
+        git clone $RepoUrl
+        Ok "Repo cloned into .\$RepoDir"
+    } else {
+        Warn "git is not yet on PATH in this session. Open a NEW terminal and run:"
+        Warn "    git clone $RepoUrl"
+    }
+}
+
+# ---------------------------------------------------------------
+# Summary
+# ---------------------------------------------------------------
+Write-Host ""
+Ok "All done! Summary:"
+foreach ($tool in @("git", "node", "npm", "code")) {
+    $cmd = Get-Command $tool -ErrorAction SilentlyContinue
+    if ($cmd) {
+        try { $ver = & $tool --version 2>$null | Select-Object -First 1 } catch { $ver = "installed" }
+        Write-Host "  ${tool}: $ver"
+    } else {
+        Write-Host "  ${tool}: installed, but open a new terminal to use it (PATH refresh)"
+    }
+}
+Write-Host ""
+Write-Host "Next steps:"
+Write-Host "  cd $RepoDir"
+Write-Host "  npm install"
+Write-Host "  code ."

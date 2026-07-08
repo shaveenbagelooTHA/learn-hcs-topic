@@ -23,6 +23,13 @@ This project demonstrates how to interact with the Hedera Hashgraph Consensus Se
   Sign up for free at the [Hedera Portal](https://portal.hedera.com/register).
 - **Hashpack Wallet**  
   Install the Mobile App and/or the Web Browser Addon [Hashpack Website](https://www.hashpack.app/download)
+- **Scripted Installation**  
+  You are welcome to try out the installation scripts for Windows and Mac/Linux on the scripts folder.  For Mac: 
+  ```
+  mv install-dep-hcs-learn-mac.sh.txt install-dep-hcs-learn-mac.sh && chmod +x install-dep-hcs-learn-mac.sh && ./install-dep-hcs-learn-mac.sh
+  ```
+  For Windows: rename the .txt file to .ps1 and run the ps1 file in a Windows PowerShell (as Administrator).
+
 
 ---
 
