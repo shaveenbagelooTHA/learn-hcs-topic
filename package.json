@@ -8,6 +8,7 @@
     "start": "node index.js",
     "start:submit-message": "nodemon submitMessage.js",
     "start:create-topic": "nodemon createTopic.js",
+    "start:create-stablecoin": "nodemon createStableCoin.js",
     "start:listener": "nodemon listener.js"
   },
   "author": "Shaveen Bageloo",

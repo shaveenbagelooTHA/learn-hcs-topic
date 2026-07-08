@@ -1,4 +1,3 @@
-MY_ACCOUNT_ID=0.0.xxxxxx # Your Hedera account ID
-MY_PRIVATE_KEY=xxxxxx #Your private key
+MY_ECDSA_ACCOUNT_ID=0.0.xxxxxx # Your ECDSA Hedera account ID
+MY_DER_ECDSA_PRIVATE_KEY=xxxxxx # Your ECDSA private key (DER encoded)
 MY_TOPIC_ID=0.0.xxxxxx # Existing topic ID (Optional)
-MY_PUBLIC_KEY=xxxxxx #Your public key
