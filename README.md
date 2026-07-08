@@ -7,7 +7,7 @@ This project demonstrates how to interact with the Hedera Hashgraph Consensus Se
 ## Features
 
 - **Topic Creation:** Programmatically create a new HCS topic.
-- **Message Submission:** Send plain text and JSON messages to a topic.
+- **Message Submission:** Send plain text,JSON, XML messages to a topic.
 - **SHA-256 Hashing:** Hash JSON payloads for privacy or verification.
 - **Transaction ID Generation:** Create unique IDs for tracking.
 - **Topic Listener:** (Optional) Listen for and print new messages arriving on the topic.
@@ -36,7 +36,11 @@ This project demonstrates how to interact with the Hedera Hashgraph Consensus Se
 
     npm i
 
-3. **Start node-mon**
+3. **Set environment variables**
+    
+    cp env-sample .env    
+
+4. **Start node-mon**
     
     npm run start
 
