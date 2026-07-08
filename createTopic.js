@@ -29,7 +29,7 @@ async function createTopic() {
 
         // 1. Create transaction object
         const txCreateTopic = new TopicCreateTransaction()
-            .setTopicMemo(`Programmatically created topic for tutorial - ${messageId}`) // Metadata
+            .setTopicMemo(`Programmatically created topic for UZH Blockchain tutorial - ${messageId}`) // Metadata
             .freezeWith(client); // Prepares transaction for signing
 
         // 2. Sign transaction with private key
