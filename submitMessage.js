@@ -105,17 +105,17 @@ async function main() {
         const centerLatitude = -26.2041;
         const centerLongitude = 28.0473;
 
-        const xmlPayload = 
-`
+        const xmlPayload =
+            `
 <?xml version="1.0" encoding="UTF-8"?>
 <note>
 	<from>Transport Company ABC</from>
-	<heading>Temperature Check</heading>
+	<heading>Temperature Check In</heading>
 	<body>
-		<timeLogged>Wednesday, July 8, 2026 at 11:30:47 AM GMT+2</timeLogged>
+		<timeLogged>${timeLogged}</timeLogged>
 		<message>Fresh Fruits Delivery Temp is 20°C</message>
-		<latitude>-26.2041</latitude>
-		<longitude>28.0473</longitude>
+		<latitude>${centerLatitude}</latitude>
+		<longitude>${centerLongitude}</longitude>
 	</body>
 </note>
 `;
