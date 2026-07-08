@@ -96,7 +96,8 @@ async function main() {
         const hash = await hashJsonString(ownershipCertificate);
         const ownershipCertificatePrivate = JSON.stringify({
             "ownershipCertificate": {
-                "hash": hash
+                "hash": hash,
+                "algorithm": "SHA-256"
             },
             "memo": memo
         });
@@ -126,6 +127,7 @@ async function main() {
         await submitMessageToTopic(MY_TOPIC_ID, ownershipCertificate, memo);
         await submitMessageToTopic(MY_TOPIC_ID, ownershipCertificatePrivate, memo);
         await submitMessageToTopic(MY_TOPIC_ID, xmlPayload, memo);
+        console.log(" ## >> Original Payload: ", ownershipCertificate, " Hash: ", hash, " ## << ");
 
 
     } catch (error) {
