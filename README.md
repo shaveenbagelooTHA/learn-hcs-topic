@@ -51,8 +51,8 @@ This project demonstrates how to interact with the Hedera Hashgraph Consensus Se
 Edit the following variables at the top of your `.env` file:
 
 
-- **MY_ACCOUNT_ID:** Your Hedera Testnet account ID.
-- **MY_PRIVATE_KEY:** Your account's private key.
+- **MY_ACCOUNT_ID:** Your ED25519 Hedera Testnet account ID.
+- **MY_PRIVATE_KEY:** Your ED25519  account's private key.
 - **MY_TOPIC_ID:** (Optional) If you want to use an existing topic, enter its ID. Otherwise you can create a new one by running npm run start:create-topic.
 
 ---
