@@ -82,6 +82,10 @@ Edit the following variables at the top of your `.env` file:
   ```
   npm run start:submit-message 
   ```
+- The script will create a new stable coin.
+  ```
+  npm run start:create-stablecoin 
+  ```
 
 
 3. **View Results**
