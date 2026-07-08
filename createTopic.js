@@ -8,12 +8,12 @@ require('dotenv').config()
 const { generateTransactionId } = require('./utils');
 
 // Configuration =====================================================
-const MY_ACCOUNT_ID = process.env.MY_ACCOUNT_ID; // Your Hedera account ID
-const MY_PRIVATE_KEY = process.env.MY_PRIVATE_KEY; // Your private key
+const MY_ACCOUNT_ID = process.env.MY_ECDSA_ACCOUNT_ID; // Your ECDSA Hedera account ID
+const MY_PRIVATE_KEY = process.env.MY_DER_ECDSA_PRIVATE_KEY; // Your ECDSA (DER encoded) private key
 
 // Convert raw strings to SDK objects for security and type safety
 const OPERATOR_ID = AccountId.fromString(MY_ACCOUNT_ID);
-const OPERATOR_KEY = PrivateKey.fromStringED25519(MY_PRIVATE_KEY);
+const OPERATOR_KEY = PrivateKey.fromStringECDSA(MY_PRIVATE_KEY);
 
 // Initialize Hedera client for Testnet with operator credentials
 const client = Client.forTestnet()
